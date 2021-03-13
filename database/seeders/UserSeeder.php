@@ -31,6 +31,6 @@ class UserSeeder extends Seeder
         $user2->remember_token = "estandar123";
         $user2->save();
 
-        User::factory(10)->create();
+        User::factory(50)->create();
     }
 }

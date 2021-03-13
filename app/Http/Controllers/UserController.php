@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -23,8 +24,11 @@ class UserController extends Controller
 	 */
 	public function index()
 	{
-		//
+		$users = User::paginate();
+
+		return view("admin.users.index", compact("users"));
 	}
+
 
 	/**
 	 * Show the form for creating a new resource.
@@ -33,7 +37,7 @@ class UserController extends Controller
 	 */
 	public function create()
 	{
-		//
+		return view("admin.users.create");
 	}
 
 	/**
@@ -55,7 +59,9 @@ class UserController extends Controller
 	 */
 	public function show($id)
 	{
-		return "ADS $id";
+		$user = User::find($id);
+
+		return view("admin.users.show", compact("user"));
 	}
 
 	/**

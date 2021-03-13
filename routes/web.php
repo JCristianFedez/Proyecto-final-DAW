@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,11 +17,28 @@ use Illuminate\Support\Facades\Route;
 Route::pattern('id', '\d+');
 
 
+Route::get("/", HomeController::class);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('users/{id}', [
-    UserController::class, "show"
-]);
+
+// Administracion de usuarios
+
+Route::get("/users/index", [UserController::class, "index"])->name("users.index");
+
+Route::get("/users/create", [UserController::class, "create"])->name("users.create");
+
+Route::get('users/{id}', [UserController::class, "show"])->name("users.show");
+
+
+
+// Route::get('/users/{id}/{token?}', function ($id, $token=null){
+//     if(!$token){
+//         return "id= $id";
+//     }else{
+//         return "id= $id, token = $token";
+//     }
+// });
+
