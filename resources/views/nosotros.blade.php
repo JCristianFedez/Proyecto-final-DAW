@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
 @section('content')
-    <h1>Inicio</h1>
+    <h1>Nosotros</h1>
     
 @endsection

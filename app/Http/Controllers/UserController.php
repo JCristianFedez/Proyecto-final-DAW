@@ -42,23 +42,16 @@ class UserController extends Controller
 	 */
 	public function store(StoreUser $request){
 		
-		// PAsado a un archivo request llamado StoreUser
+		// Pasado a un archivo request llamado StoreUser
 		// $request->validate([
 		// 	"name" => "required|max:10",
 		// 	"email" => "required",
 		// 	"password" => "required|min:6"
 		// ]);
 
-		
-		$user = new User();
-		$user->name = $request->name;
-		$user->email = $request->email;
-		$user->password = $request->password;
-		$user->email_verified_at = now();
-		
-		$user->save();
+		$user = User::create($request->all());
 
-		return redirect()->route("users.show", $user->id);
+		return redirect()->route("users.show", $user);
 	}
 
 	/**
@@ -81,26 +74,19 @@ class UserController extends Controller
 	 * Update user
 	 */
 	public function update(User $user, StoreUser $request){
-		// $request->validate([
-		// 	"name" => "required|max:40",
-		// 	"email" => "required",
-		// 	"password" => "required|min:6"
-		// ]);
-		
-		$user->name = $request->name;
-		$user->email = $request->email;
-		$user->password = $request->password;
-		$user->email_verified_at = now();
-		$user->save();
 
-		return redirect()->route("users.show", $user->id);
+		$user->update($request->all());
+
+		return redirect()->route("users.show", $user);
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 *
 	 */
-	public function destroy($id){
-		//
+	public function destroy(User $user){
+		$user->delete();
+		return redirect()->route("users.index");
+
 	}
 }

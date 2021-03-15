@@ -1,4 +1,4 @@
-@extends('admin.layouts.plantilla')
+@extends('layouts.plantilla')
 
 @section('content')
     <h1>I'm an user Editor</h1>

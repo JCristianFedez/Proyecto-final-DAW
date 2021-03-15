@@ -1,4 +1,4 @@
-@extends('admin.layouts.plantilla')
+@extends('layouts.plantilla')
 
 @section('content')
     <h1>I'm Crud</h1>
@@ -6,7 +6,7 @@
     <ul>
         @foreach ($users as $us)
             <li>
-                <a href="{{route("users.show", $us->id)}}">{{$us->name}}</a>
+                <a href="{{route("users.show", $us)}}">{{$us->name}}</a>
             </li>
 
         @endforeach

@@ -30,6 +30,20 @@ class User extends Authenticatable
     ];
 
     /**
+     * Campos que no se asignaran por asignaicon masiva
+     */
+    protected $guarded = [
+        "id",
+        "email_verified_at",
+        "monedero",
+        "admin",
+        "remember_token",
+        "created_at",
+        "updated_at",
+        "slug"
+    ];
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
@@ -47,4 +61,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getRouteKeyName()
+    {
+        return "slug";
+    }
 }

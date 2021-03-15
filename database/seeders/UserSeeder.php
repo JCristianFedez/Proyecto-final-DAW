@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -21,6 +22,7 @@ class UserSeeder extends Seeder
         $user->email_verified_at = now();
         $user->admin = 1;
         $user->remember_token = "admin124";
+        $user->slug = Str::slug("Admin","-");
         $user->save();
 
         $user2 = new User();
@@ -29,6 +31,7 @@ class UserSeeder extends Seeder
         $user2->email = "estandar@gmail.com";
         $user2->email_verified_at = now();
         $user2->remember_token = "estandar123";
+        $user2->slug = Str::slug("Estandar","-");
         $user2->save();
 
         User::factory(50)->create();

@@ -22,14 +22,16 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $name = $this->faker->name;
         return [
-            'name' => $this->faker->name,
+            'name' => $name,
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
             'password' => $this->faker->password(), // password
             'monedero' => rand(0,1000),
             'admin' => rand(0,1),
             'remember_token' => Str::random(10),
+            'slug' => Str::slug($name,"-")
         ];
     }
 
